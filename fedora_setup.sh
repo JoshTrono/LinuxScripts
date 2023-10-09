@@ -15,3 +15,14 @@ sudo snap install discord
 cd /tmp/
 wget https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
 sudo dnf install ./appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm -y
+
+## add codecs
+# Free
+sudo dnf install \
+  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y
+# NonFree
+sudo dnf install \
+  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y
+sudo dnf install lame\* --exclude=lame-devel -y 
+sudo dnf group upgrade --with-optional Multimedia --allowerasing -y

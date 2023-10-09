@@ -1,0 +1,33 @@
+sudo dnf upgrade -y && sudo dnf install gnome-shell-extension-appindicator gnome-shell-extension-dash-to-dock gnome-shell-extension-dash-to-panel gnome-shell-extension-user-theme gnome-tweaks snapd steam mangohud gamemode -y && flatpak install bottles flatseal net.davidotek.pupgui2 com.mattjakeman.ExtensionManager -y && sudo ln -s /var/lib/snapd/snap /snap && sudo systemctl enable --now snapd && sudo snap install snap-store && sudo snap install discord && cd /tmp/ && wget https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm && sudo dnf install ./appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm -y
+
+-------------------------
+Explanation
+
+
+fedora - package manager is dnf which must be run in root. sudo dnf install <packages> sudo dnf search to search
+	flatpak is a universal package which works without root. So all you need to do is run flatpak install <package names> to install.
+	flatpak update and dnf upgrade are the commands to upgrade
+	
+I install snap as well which is the univeral package standard that ubuntu made and opera browser works the best on this platform and discord updates better on this as well. sudo snap install to download and sudo snap refresh to update.
+
+appimagelauncher is a tool to launch and integrate appimages which is another universal standard. I know there is a lot of app standards but all you need to know is dnf is fedora package, flatpak is red hats (IBM) universal package manager, snap is ubuntus univeral package manager while appimage is dumb.
+
+----- 
+To install steamtinkerlauncher from protonup-qt
+required dependencies 
+sudo dnf install xdotool xrandr xxd xwininfo yad
+
+then install steamtinkerlaunch from protonup-qt
+
+
+
+-------
+Ubuntu
+
+sudo apt update && sudo apt full-upgrade -y && sudo apt install  gnome-shell-extension-ubuntu-tiling-assistant gnome-tweaks mangohud gamemode flatpak gnome-software-plugin-flatpak -y && flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && flatpak install bottles flatseal net.davidotek.pupgui2 com.mattjakeman.ExtensionManager -y && sudo snap install discord && cd /tmp/ && wget https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher_2.2.0-travis995.0f91801.bionic_amd64.deb && sudo apt install ./appimagelauncher_2.2.0-travis995.0f91801.bionic_amd64.deb -y && wget https://cdn.cloudflare.steamstatic.com/client/installer/steam.deb && sudo apt install ./steam.deb -y
+
+commands for my framework laptop 12th gen
+
+sudo apt update && sudo apt upgrade -y && sudo snap refresh && echo "options snd-hda-intel model=dell-headset-multi" | sudo tee -a /etc/modprobe.d/alsa-base.conf && gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']" && sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash module_blacklist=hid_sensor_hub"/g' /etc/default/grub && sudo update-grub && echo "[connection]" | sudo tee /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf && echo "wifi.powersave = 2" | sudo tee -a /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf && sudo systemctl stop power-profiles-daemon.service && sudo systemctl disable power-profiles-daemon.service && sudo apt remove power-profiles-daemon && sudo apt install tlp tlp-rdw && sudo systemctl enable tlp && sudo systemctl start tlp && sudo systemctl status tlp
+ 
+
